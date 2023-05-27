@@ -3,7 +3,8 @@ const morgan = require('morgan');
 const http = require("http");
 const bodyParser = require('body-parser');
 
-const dishRouter = require("./routes/dishRouter");
+const dishRouter = require("./routes/dishRouter"), promotions = require("./routes/promotions");
+const leaders = require("./routes/leaders");
 const hostname = "localhost";
 const port = 3000;
 
@@ -12,6 +13,8 @@ app.use(morgan('dev'));
 app.use(bodyParser.json());
 
 app.use('/dishes',dishRouter);
+app.use('/promotions',promotions);
+app.use('/leaders',leaders);
 
 app.use(express.static(__dirname+'/public'));
 
